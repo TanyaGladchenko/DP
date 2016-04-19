@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/tx 
+  	   http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:/database.properties</value>
+		</property>
+	</bean>
+	<import resource="database-context.xml" />
+
+	<!-- Definition for studentJDBCTemplate bean -->
+	<bean id="movesJdbc" class="dao.IMovesDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="playerStatisticJdbc" class="dao.IPlayerStatisticDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="positionJdbc" class="dao.IPositionDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="protocolJdbc" class="dao.IProtocolDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="roleJdbc" class="dao.IRoleDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="stateGameJdbc" class="dao.IStateGameDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="userJdbc" class="dao.IUserDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>
+
+
