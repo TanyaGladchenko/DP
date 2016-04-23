@@ -38,7 +38,7 @@ public class RoleJdbc implements IRoleDao {
 	}
 
 	public Role load(Long id) {
-		Role r = (Role) this.jdbcTemplateObject.query(SQL_SELECT_ROLE_QUERY, new Object[] { id }, new RoleMapper());
+		Role r = (Role) this.jdbcTemplateObject.queryForObject(SQL_SELECT_ROLE_QUERY, new Object[] { id }, new RoleMapper());
 		return r;
 	}
 
@@ -54,10 +54,10 @@ public class RoleJdbc implements IRoleDao {
 	private class RoleMapper implements RowMapper<Role> {
 
 		public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Role sg = new Role();
-			sg.setId(rs.getInt("role_id"));
-			sg.setName(rs.getString("name"));
-			return sg;
+			Role role = new Role();
+			role.setId(rs.getLong("role_id"));
+			role.setName(rs.getString("name"));
+			return role;
 		}
 	}
 }

@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 /**
  * @author Tatyana_Gladchenko
- *		<p>
- *  		Protocol transfer object. Represents Protocol table in database
- *  	</p>
+ *         <p>
+ *         Protocol transfer object. Represents Protocol table in database
+ *         </p>
  */
 public class Protocol implements Serializable {
 
@@ -21,9 +21,20 @@ public class Protocol implements Serializable {
 	private long blackPlayerId;
 	private long stateGameId;
 	private String title;
-	
-	
-	
+
+	public Protocol(long id, long positionId, long whitePlayerId, long blackPlayerId, long stateGameId, String title) {
+		super();
+		this.id = id;
+		this.positionId = positionId;
+		this.whitePlayerId = whitePlayerId;
+		this.blackPlayerId = blackPlayerId;
+		this.stateGameId = stateGameId;
+		this.title = title;
+	}
+
+	public Protocol() {
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -36,16 +47,12 @@ public class Protocol implements Serializable {
 		result = prime * result + (int) (whitePlayerId ^ (whitePlayerId >>> 32));
 		return result;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
 		return "Protocol {id=" + id + ", positionId=" + positionId + ", whitePlayerId=" + whitePlayerId
 				+ ", blackPlayerId=" + blackPlayerId + ", stateGameId=" + stateGameId + ", title=" + title + "}";
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -73,40 +80,52 @@ public class Protocol implements Serializable {
 			return false;
 		return true;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public long getPositionId() {
 		return positionId;
 	}
+
 	public void setPositionId(long positionId) {
 		this.positionId = positionId;
 	}
+
 	public long getWhitePlayerId() {
 		return whitePlayerId;
 	}
+
 	public void setWhitePlayerId(long whitePlayerId) {
 		this.whitePlayerId = whitePlayerId;
 	}
+
 	public long getBlackPlayerId() {
 		return blackPlayerId;
 	}
+
 	public void setBlackPlayerId(long blackPlayerId) {
 		this.blackPlayerId = blackPlayerId;
 	}
+
 	public long getStateGameId() {
 		return stateGameId;
 	}
+
 	public void setStateGameId(long stateGameId) {
 		this.stateGameId = stateGameId;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
-	}	
+	}
 }

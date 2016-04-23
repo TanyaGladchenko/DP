@@ -41,13 +41,13 @@ public class PlayerStatisticJdbc implements IPlayerStatisticDao {
 	}
 
 	public PlayerStatistic load(Long id) {
-		PlayerStatistic ps = (PlayerStatistic) this.jdbcTemplateObject.query(SQL_SELECT_PS_QUERY, new Object[] { id },
+		PlayerStatistic ps = this.jdbcTemplateObject.queryForObject(SQL_SELECT_PS_QUERY, new Object[] { id },
 				new PSMapper());
 		return ps;
 	}
 
 	public PlayerStatistic loadByPlayer(Long idPlayer) {
-		PlayerStatistic ps = (PlayerStatistic) this.jdbcTemplateObject.query(SQL_SELECT_PS_BY_PLAYER_QUERY,
+		PlayerStatistic ps = this.jdbcTemplateObject.queryForObject(SQL_SELECT_PS_BY_PLAYER_QUERY,
 				new Object[] { idPlayer }, new PSMapper());
 		return ps;
 	}

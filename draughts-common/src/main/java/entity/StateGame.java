@@ -16,9 +16,17 @@ public class StateGame implements Serializable {
 	private long id;
 	private String name;
 		
+	public StateGame() {}
+	
+	public StateGame(long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
-		return "StateGame [id=" + id + ", name=" + name + "]";
+		return "StateGame {id=" + id + ", name=" + name + "}";
 	}
 	
 	@Override

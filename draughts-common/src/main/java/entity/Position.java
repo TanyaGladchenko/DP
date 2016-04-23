@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 /**
  * @author Tatyana_Gladchenko
- *		<p>
- *  		Position transfer object. Represents Position table in database
- *		</p>
+ *         <p>
+ *         Position transfer object. Represents Position table in database
+ *         </p>
  */
 public class Position implements Serializable {
 
@@ -22,14 +22,28 @@ public class Position implements Serializable {
 	private String whiteKing;
 	private String blackKing;
 	private boolean blackMoveFirst;
-	
-	
-	
+
+	public Position() {
+	}
+
+	public Position(long id, String title, String whiteMan, String blackMan, String whiteKing, String blackKing,
+			boolean blackMoveFirst) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.whiteMan = whiteMan;
+		this.blackMan = blackMan;
+		this.whiteKing = whiteKing;
+		this.blackKing = blackKing;
+		this.blackMoveFirst = blackMoveFirst;
+	}
+
 	@Override
 	public String toString() {
 		return "Position {id=" + id + ", title=" + title + ", whiteMan=" + whiteMan + ", blackMan=" + blackMan
 				+ ", whiteKing=" + whiteKing + ", blackKing=" + blackKing + ", blackMoveFirst=" + blackMoveFirst + "}";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -43,6 +57,7 @@ public class Position implements Serializable {
 		result = prime * result + ((whiteMan == null) ? 0 : whiteMan.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,47 +98,61 @@ public class Position implements Serializable {
 			return false;
 		return true;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getWhiteMan() {
 		return whiteMan;
 	}
+
 	public void setWhiteMan(String whiteMan) {
 		this.whiteMan = whiteMan;
 	}
+
 	public String getBlackMan() {
 		return blackMan;
 	}
+
 	public void setBlackMan(String blackMan) {
 		this.blackMan = blackMan;
 	}
+
 	public String getWhiteKing() {
 		return whiteKing;
 	}
+
 	public void setWhiteKing(String whiteKing) {
 		this.whiteKing = whiteKing;
 	}
+
 	public String getBlackKing() {
 		return blackKing;
 	}
+
 	public void setBlackKing(String blackKing) {
 		this.blackKing = blackKing;
 	}
+
 	public boolean isBlackMoveFirst() {
 		return blackMoveFirst;
 	}
+
 	public void setBlackMoveFirst(boolean blackMoveFirst) {
 		this.blackMoveFirst = blackMoveFirst;
 	}
-	
+
 }

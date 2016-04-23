@@ -18,6 +18,14 @@ public class Role implements Serializable {
 	private long id;
 	private String name;
 	
+	public Role() {}
+
+	public Role(long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
 		return "Role {id=" + id + ", name=" + name + "}";

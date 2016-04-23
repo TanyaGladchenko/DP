@@ -41,7 +41,7 @@ public class PositionJdbc implements IPositionDao {
 	}
 
 	public Position load(Long id) {
-		Position p = (Position) this.jdbcTemplateObject.query(SQL_SELECT_POSITION_QUERY, new Object[] { id },
+		Position p = (Position) this.jdbcTemplateObject.queryForObject(SQL_SELECT_POSITION_QUERY, new Object[] { id },
 				new PositionMapper());
 		return p;
 	}

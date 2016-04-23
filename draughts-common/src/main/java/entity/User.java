@@ -4,13 +4,13 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author Tatyana_Gladchenko
- *		<p>
- *      	User transfer object. Represents User table in database
- *		</p>
+ *         <p>
+ *         User transfer object. Represents User table in database
+ *         </p>
  */
 public class User implements Serializable {
 
@@ -23,15 +23,31 @@ public class User implements Serializable {
 	private String password;
 	private String email;
 	private Date birthday;
-	
-	
-	
+
+	public User() {
+	}
+
+	public User(long id, String firstName, String middleName, String lastName, String login, String password,
+			String email, Date birthday, long roleId) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.login = login;
+		this.password = password;
+		this.email = email;
+		this.birthday = birthday;
+		this.roleId = roleId;
+	}
+
 	@Override
 	public String toString() {
 		return "User {id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
 				+ ", login=" + login + ", password=" + password + ", email=" + email + ", birthday=" + birthday
 				+ ", roleId=" + roleId + "}";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -47,6 +63,7 @@ public class User implements Serializable {
 		result = prime * result + (int) (roleId ^ (roleId >>> 32));
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -97,59 +114,78 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getMiddleName() {
 		return middleName;
 	}
+
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getLogin() {
 		return login;
 	}
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public Date getBirthday() {
 		return birthday;
 	}
+
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+
 	public long getRoleId() {
 		return roleId;
 	}
+
 	public void setRoleId(long roleId) {
 		this.roleId = roleId;
 	}
+
 	private long roleId;
 }

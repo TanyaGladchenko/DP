@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 /**
  * @author Tatyana_Gladchenko
- *		<p>
- *  		Moves transfer object. Represents Moves table in database
- *		</p>
+ *         <p>
+ *         Moves transfer object. Represents Moves table in database
+ *         </p>
  */
 public class Moves implements Serializable {
 
@@ -22,14 +22,29 @@ public class Moves implements Serializable {
 	private String commentWhite;
 	private String moveBlack;
 	private String commentBlack;
-		
+
+	public Moves() {
+	}
+
+	public Moves(long id, long protocolId, int number, String moveWhite, String commentWhite, String moveBlack,
+			String commentBlack) {
+		super();
+		this.id = id;
+		this.protocolId = protocolId;
+		this.number = number;
+		this.moveWhite = moveWhite;
+		this.commentWhite = commentWhite;
+		this.moveBlack = moveBlack;
+		this.commentBlack = commentBlack;
+	}
+
 	@Override
 	public String toString() {
 		return "Moves {id=" + id + ", protocolId=" + protocolId + ", number=" + number + ", moveWhite=" + moveWhite
 				+ ", commentWhite=" + commentWhite + ", moveBlack=" + moveBlack + ", commentBlack=" + commentBlack
 				+ "}";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -43,7 +58,7 @@ public class Moves implements Serializable {
 		result = prime * result + (int) (protocolId ^ (protocolId >>> 32));
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,45 +96,59 @@ public class Moves implements Serializable {
 			return false;
 		return true;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public long getProtocolId() {
 		return protocolId;
 	}
+
 	public void setProtocolId(long protocolId) {
 		this.protocolId = protocolId;
 	}
+
 	public int getNumber() {
 		return number;
 	}
+
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
 	public String getMoveWhite() {
 		return moveWhite;
 	}
+
 	public void setMoveWhite(String moveWhite) {
 		this.moveWhite = moveWhite;
 	}
+
 	public String getCommentWhite() {
 		return commentWhite;
 	}
+
 	public void setCommentWhite(String commentWhite) {
 		this.commentWhite = commentWhite;
 	}
+
 	public String getMoveBlack() {
 		return moveBlack;
 	}
+
 	public void setMoveBlack(String moveBlack) {
 		this.moveBlack = moveBlack;
 	}
+
 	public String getCommentBlack() {
 		return commentBlack;
 	}
+
 	public void setCommentBlack(String commentBlack) {
 		this.commentBlack = commentBlack;
 	}

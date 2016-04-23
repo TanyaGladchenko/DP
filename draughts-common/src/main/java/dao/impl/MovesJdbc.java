@@ -41,7 +41,8 @@ public class MovesJdbc implements IMovesDao {
 	}
 
 	public Moves load(Long id) {
-		Moves m = (Moves) this.jdbcTemplateObject.query(SQL_SELECT_MOVES_QUERY, new Object[] { id }, new MovesMapper());
+		Moves m = this.jdbcTemplateObject.queryForObject(SQL_SELECT_MOVES_QUERY, new Object[] { id },
+				new MovesMapper());
 		return m;
 	}
 
@@ -65,13 +66,13 @@ public class MovesJdbc implements IMovesDao {
 
 		public Moves mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Moves m = new Moves();
-			m.setId(rs.getLong("id_moves"));
+			m.setId(rs.getLong("moves_id"));
 			m.setProtocolId(rs.getLong("protocol_id"));
 			m.setNumber(rs.getInt("number"));
 			m.setMoveWhite(rs.getString("move_white"));
 			m.setCommentWhite(rs.getString("comment_white"));
 			m.setMoveBlack(rs.getString("move_black"));
-			m.setCommentBlack(rs.getString("commentBlack"));
+			m.setCommentBlack(rs.getString("comment_black"));
 			return m;
 		}
 

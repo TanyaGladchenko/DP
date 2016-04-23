@@ -8,37 +8,37 @@
        http://www.springframework.org/schema/tx 
   	   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location">
-			<value>classpath:/database.properties</value>
-		</property>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/dbtraining" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
 	</bean>
-	<import resource="database-context.xml" />
+
 
 	<!-- Definition for studentJDBCTemplate bean -->
-	<bean id="movesJdbc" class="dao.IMovesDao">
+	<bean id="roleJdbc" class="dao.impl.RoleJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="playerStatisticJdbc" class="dao.IPlayerStatisticDao">
+	<bean id="stateGameJdbc" class="dao.impl.StateGameJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="positionJdbc" class="dao.IPositionDao">
+	<bean id="userJdbc" class="dao.impl.UserJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="protocolJdbc" class="dao.IProtocolDao">
+	<bean id="positionJdbc" class="dao.impl.PositionJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="roleJdbc" class="dao.IRoleDao">
+	<bean id="movesJdbc" class="dao.impl.MovesJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="stateGameJdbc" class="dao.IStateGameDao">
+	<bean id="playerStatisticJdbc" class="dao.impl.PlayerStatisticJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="userJdbc" class="dao.IUserDao">
+	<bean id="protocolJdbc" class="dao.impl.ProtocolJdbc">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
 </beans>
 
 

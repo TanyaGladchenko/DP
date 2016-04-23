@@ -43,7 +43,7 @@ public class ProtocolJdbc implements IProtocolDao {
 	}
 
 	public Protocol load(Long id) {
-		Protocol p = (Protocol) this.jdbcTemplateObject.query(SQL_SELECT_PROTOCOL_QUERY, new Object[] { id },
+		Protocol p = this.jdbcTemplateObject.queryForObject(SQL_SELECT_PROTOCOL_QUERY, new Object[] { id },
 				new ProtocolMapper());
 		return p;
 	}

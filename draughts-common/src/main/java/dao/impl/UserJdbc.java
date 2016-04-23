@@ -17,7 +17,7 @@ public class UserJdbc implements IUserDao {
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 
-	private static final String SQL_INSERT_USER_QUERY = "INSERT INTO USER (first_name, middle_name, last_name, login, password, email, birthday, role_id) values (?,?,?,?,?,?,?,1)";
+	private static final String SQL_INSERT_USER_QUERY = "INSERT INTO USER (first_name, middle_name, last_name, login, password, email, birthday, role_id) values (?,?,?,?,?,?,?,?)";
 	private static final String SQL_UPDATE_INFO_QUERY = "UPDATE USER SET first_name=?, middle_name=?, last_name=?, birthday=?, login=?, email=? WHERE user_id=?";
 	private static final String SQL_UPDATE_PASSWORD_QUERY = "UPDATE USER SET password=? WHERE user_id=?";
 	private static final String SQL_DELETE_USER_QUERY = "DELETE FROM USER WHERE user_id=?";
@@ -32,8 +32,8 @@ public class UserJdbc implements IUserDao {
 	}
 
 	public void add(User obj) {
-		Object[] o = { obj.getFirstName(), obj.getMiddleName(), obj.getLastName(), obj.getLogin(), obj.getEmail(),
-				obj.getBirthday() };
+		Object[] o = { obj.getFirstName(), obj.getMiddleName(), obj.getLastName(), obj.getLogin(), obj.getPassword(),
+				obj.getEmail(), obj.getBirthday(), obj.getRoleId() };
 		this.jdbcTemplateObject.update(SQL_INSERT_USER_QUERY, o);
 		return;
 	}
@@ -44,7 +44,8 @@ public class UserJdbc implements IUserDao {
 	}
 
 	public User load(Long id) {
-		User user = (User) this.jdbcTemplateObject.query(SQL_SELECT_USER_QUERY, new Object[] { id }, new UserMapper());
+		User user = this.jdbcTemplateObject.queryForObject(SQL_SELECT_USER_QUERY, new Object[] { id },
+				new UserMapper());
 		return user;
 	}
 
@@ -83,6 +84,7 @@ public class UserJdbc implements IUserDao {
 			user.setLogin(rs.getString("login"));
 			user.setEmail(rs.getString("email"));
 			user.setPassword(rs.getString("password"));
+			user.setBirthday(rs.getDate("birthday"));
 			user.setRoleId(rs.getLong("role_id"));
 			return user;
 		}

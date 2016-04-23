@@ -38,7 +38,7 @@ public class StateGameJdbc implements IStateGameDao {
 	}
 
 	public StateGame load(Long id) {
-		StateGame sg = (StateGame) this.jdbcTemplateObject.query(SQL_SELECT_SG_QUERY, new Object[] { id },
+		StateGame sg = (StateGame) this.jdbcTemplateObject.queryForObject(SQL_SELECT_SG_QUERY, new Object[] { id },
 				new SGMapper());
 		return sg;
 	}
