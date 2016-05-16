@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IPositionDao;
 import entity.Position;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         Position dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class PositionJdbc implements IPositionDao {
 
 	private DataSource dataSource;
@@ -29,10 +37,11 @@ public class PositionJdbc implements IPositionDao {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(Position addObject) {
+	public Long add(Position addObject) {
 		Object[] args = { addObject.getBlackKing(), addObject.getBlackMan(), addObject.isBlackMoveFirst(),
 				addObject.getTitle(), addObject.getWhiteKing(), addObject.getWhiteMan() };
-		this.jdbcTemplateObject.update(SQL_INSERT_POSITION_QUERY, args);
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_POSITION_QUERY, args);
+		return count;
 	}
 
 	public List<Position> loadAll() {

@@ -15,8 +15,8 @@ public class Moves implements Serializable {
 
 	private static final long serialVersionUID = -4968557571656907972L;
 
-	private long id;
-	private long protocolId;
+	private Long id;
+	private Long protocolId;
 	private int number;
 	private String moveWhite;
 	private String commentWhite;
@@ -26,7 +26,7 @@ public class Moves implements Serializable {
 	public Moves() {
 	}
 
-	public Moves(long id, long protocolId, int number, String moveWhite, String commentWhite, String moveBlack,
+	public Moves(Long id, Long protocolId, int number, String moveWhite, String commentWhite, String moveBlack,
 			String commentBlack) {
 		super();
 		this.id = id;
@@ -97,19 +97,19 @@ public class Moves implements Serializable {
 		return true;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getProtocolId() {
+	public Long getProtocolId() {
 		return protocolId;
 	}
 
-	public void setProtocolId(long protocolId) {
+	public void setProtocolId(Long protocolId) {
 		this.protocolId = protocolId;
 	}
 

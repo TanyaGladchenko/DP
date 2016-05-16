@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IStateGameDao;
 import entity.StateGame;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         StateGame dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class StateGameJdbc implements IStateGameDao {
 
 	private DataSource dataSource;
@@ -28,8 +36,9 @@ public class StateGameJdbc implements IStateGameDao {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(StateGame addObject) {
-		this.jdbcTemplateObject.update(SQL_INSERT_SG_QUERY, addObject.getName());
+	public Long add(StateGame addObject) {
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_SG_QUERY, addObject.getName());
+		return count;
 	}
 
 	public List<StateGame> loadAll() {
@@ -56,7 +65,7 @@ public class StateGameJdbc implements IStateGameDao {
 
 		public StateGame mapRow(ResultSet rs, int rowNum) throws SQLException {
 			StateGame sg = new StateGame();
-			sg.setId(rs.getInt("state_game_id"));
+			sg.setId(rs.getLong("state_game_id"));
 			sg.setName(rs.getString("name"));
 			return sg;
 		}

@@ -15,12 +15,12 @@ public class Role implements Serializable {
 
 	private static final long serialVersionUID = 8087248923407793813L;
 
-	private long id;
+	private Long id;
 	private String name;
 	
 	public Role() {}
 
-	public Role(long id, String name) {
+	public Role(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -59,10 +59,10 @@ public class Role implements Serializable {
 		return true;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

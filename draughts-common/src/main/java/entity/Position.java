@@ -15,7 +15,7 @@ public class Position implements Serializable {
 
 	private static final long serialVersionUID = 297556133211460594L;
 
-	private long id;
+	private Long id;
 	private String title;
 	private String whiteMan;
 	private String blackMan;
@@ -26,7 +26,7 @@ public class Position implements Serializable {
 	public Position() {
 	}
 
-	public Position(long id, String title, String whiteMan, String blackMan, String whiteKing, String blackKing,
+	public Position(Long id, String title, String whiteMan, String blackMan, String whiteKing, String blackKing,
 			boolean blackMoveFirst) {
 		super();
 		this.id = id;
@@ -99,11 +99,11 @@ public class Position implements Serializable {
 		return true;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

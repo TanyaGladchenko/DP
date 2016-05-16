@@ -13,12 +13,12 @@ public class StateGame implements Serializable {
 
 	private static final long serialVersionUID = 3715741579304538898L;
 
-	private long id;
+	private Long id;
 	private String name;
 		
 	public StateGame() {}
 	
-	public StateGame(long id, String name) {
+	public StateGame(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -57,10 +57,10 @@ public class StateGame implements Serializable {
 		return true;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

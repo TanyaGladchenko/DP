@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IUserDao;
 import entity.User;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         User dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class UserJdbc implements IUserDao {
 
 	private DataSource dataSource;
@@ -25,17 +33,18 @@ public class UserJdbc implements IUserDao {
 	private static final String SQL_SELECT_ALL_USERS_QUERY = "SELECT * FROM USER ORDER BY last_name, first_name, middle_name";
 	private static final String SQL_SELECT_USER_BY_ROLE_QUERY = "SELECT * FROM USER WHERE role_id=? ORDER BY last_name, first_name, middle_name";
 	private static final String SQL_SELECT_PLAUERS_SORT_BY_AGE_QUERY = "SELECT * FROM USER WHERE role_id=1 ORDER BY birthday";
-
+	private static final String SQL_SELECT_USER_BY_LOGIN = "SELECT * FROM USER WHERE login=?";
+	
 	public void setDataSource(DataSource ds) {
 		this.dataSource = ds;
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(User obj) {
+	public Long add(User obj) {
 		Object[] o = { obj.getFirstName(), obj.getMiddleName(), obj.getLastName(), obj.getLogin(), obj.getPassword(),
 				obj.getEmail(), obj.getBirthday(), obj.getRoleId() };
-		this.jdbcTemplateObject.update(SQL_INSERT_USER_QUERY, o);
-		return;
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_USER_QUERY, o);
+		return count;
 	}
 
 	public List<User> loadAll() {
@@ -63,7 +72,7 @@ public class UserJdbc implements IUserDao {
 		this.jdbcTemplateObject.update(SQL_UPDATE_PASSWORD_QUERY, user.getPassword(), user.getId());
 	}
 
-	public List<User> loadPlauers() {
+	public List<User> loadPlayers() {
 		List<User> users = this.jdbcTemplateObject.query(SQL_SELECT_PLAUERS_SORT_BY_AGE_QUERY, new UserMapper());
 		return users;
 	};
@@ -73,6 +82,10 @@ public class UserJdbc implements IUserDao {
 		return users;
 	};
 
+	public User loadByLogin(String login){
+		User user = this.jdbcTemplateObject.queryForObject(SQL_SELECT_USER_BY_LOGIN, new Object[]{login}, new UserMapper());
+		return user;
+	}
 	private class UserMapper implements RowMapper<User> {
 
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -89,5 +102,10 @@ public class UserJdbc implements IUserDao {
 			return user;
 		}
 
+	}
+
+	public User loadByLogin() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -16,13 +16,13 @@ public class PlayerStatistic implements Serializable {
 
 	private static final long serialVersionUID = -8781023245472539369L;
 
-	private long id;
-	private long playerId;
+	private Long id;
+	private Long playerId;
 	private int gamesLoose;
 	private int gamesWon;
 	private int gamesDraw;
 
-	public PlayerStatistic(long id, long playerId, int gamesLoose, int gamesWon, int gamesDraw) {
+	public PlayerStatistic(Long id, Long playerId, int gamesLoose, int gamesWon, int gamesDraw) {
 		super();
 		this.id = id;
 		this.playerId = playerId;
@@ -74,19 +74,19 @@ public class PlayerStatistic implements Serializable {
 		return true;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getPlayerId() {
+	public Long getPlayerId() {
 		return playerId;
 	}
 
-	public void setPlayerId(long playerId) {
+	public void setPlayerId(Long playerId) {
 		this.playerId = playerId;
 	}
 

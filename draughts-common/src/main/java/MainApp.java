@@ -17,7 +17,7 @@ public class MainApp {
 
 		PlayerStatisticJdbc playerStatistic = (PlayerStatisticJdbc) context.getBean("playerStatisticJdbc");
 		PlayerStatistic ps1 = new PlayerStatistic(0L, 5L, 1, 1, 1);
-		PlayerStatistic ps2 = new PlayerStatistic(0L, 7L, 1, 1, 1);
+//		PlayerStatistic ps2 = new PlayerStatistic(0L, 7L, 1, 1, 1);
 
 //		playerStatistic.add(ps1);
 //		playerStatistic.add(ps2);

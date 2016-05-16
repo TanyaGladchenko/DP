@@ -31,7 +31,7 @@ public interface GenericDao<T> {
 	 *            - dao object, that added in db
 	 * @return new id
 	 */
-	void add(T addObject);
+	Long add(T addObject);
 
 	/**
 	 * Load all objects of required type from database

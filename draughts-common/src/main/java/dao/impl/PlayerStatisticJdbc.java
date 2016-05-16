@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IPlayerStatisticDao;
 import entity.PlayerStatistic;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         PlayerStatistic dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class PlayerStatisticJdbc implements IPlayerStatisticDao {
 
 	private DataSource dataSource;
@@ -29,10 +37,11 @@ public class PlayerStatisticJdbc implements IPlayerStatisticDao {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(PlayerStatistic addObject) {
+	public Long add(PlayerStatistic addObject) {
 		Object[] args = { addObject.getPlayerId(), addObject.getGamesDraw(), addObject.getGamesLoose(),
 				addObject.getGamesWon() };
-		this.jdbcTemplateObject.update(SQL_INSERT_PS_QUERY, args);
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_PS_QUERY, args);
+		return count;
 	}
 
 	public List<PlayerStatistic> loadAll() {

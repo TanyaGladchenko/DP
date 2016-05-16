@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IMovesDao;
 import entity.Moves;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         Moves dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class MovesJdbc implements IMovesDao {
 
 	private DataSource dataSource;
@@ -29,10 +37,11 @@ public class MovesJdbc implements IMovesDao {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(Moves addObject) {
+	public Long add(Moves addObject) {
 		Object[] args = { addObject.getProtocolId(), addObject.getNumber(), addObject.getMoveWhite(),
 				addObject.getCommentWhite(), addObject.getMoveBlack(), addObject.getCommentBlack() };
-		this.jdbcTemplateObject.update(SQL_INSERT_MOVES_QUERY, args);
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_MOVES_QUERY, args);
+		return count;
 	}
 
 	public List<Moves> loadAll() {

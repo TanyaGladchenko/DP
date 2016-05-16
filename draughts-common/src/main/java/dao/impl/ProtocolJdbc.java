@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IProtocolDao;
 import entity.Protocol;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         Protocol dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class ProtocolJdbc implements IProtocolDao {
 
 	private DataSource dataSource;
@@ -31,10 +39,11 @@ public class ProtocolJdbc implements IProtocolDao {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(Protocol addObject) {
+	public Long add(Protocol addObject) {
 		Object[] args = { addObject.getBlackPlayerId(), addObject.getPositionId(), addObject.getStateGameId(),
 				addObject.getTitle(), addObject.getWhitePlayerId() };
-		this.jdbcTemplateObject.update(SQL_INSERT_PROTOCOL_QUERY, args);
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_PROTOCOL_QUERY, args);
+		return count;
 	}
 
 	public List<Protocol> loadAll() {

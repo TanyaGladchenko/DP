@@ -12,7 +12,12 @@ import entity.Moves;
  */
 
 public interface IMovesDao extends GenericDao<Moves>{
-	
+	 
+	/** Load all Moves by protocolId
+	 * 
+	 * @param protocolId
+	 * @return moves list
+	 */
 	public List<Moves> loadByProtocol(Long protocolId);
 
 	}

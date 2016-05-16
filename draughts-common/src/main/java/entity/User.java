@@ -6,6 +6,9 @@ package entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 /**
  * @author Tatyana_Gladchenko
  *         <p>
@@ -15,20 +18,42 @@ import java.sql.Date;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 2468931214011712576L;
-	private long id;
+	private Long id;
+	
+	@NotNull
+	@Size(min=3, max=20, message="Your first name must be between 3 and 20 characters long.")
 	private String firstName;
+	
+	@Size(min=3, max=30, message="Your middle name must be between 3 and 30 characters long.")
 	private String middleName;
+	
+	@NotNull
+	@Size(min=3, max=30, message="Your last name must be between 3 and 30 characters long.")
 	private String lastName;
+	
+	@NotNull
+	@Pattern(regexp="^[a-zA-Z0-9]+$",
+			message="Login must be alphanumeric with no spaces")
 	private String login;
+	
+	@NotNull
+	@Size(min=6, message="The password must be more 6 characters long.")
 	private String password;
+	
+	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",
+			message="Invalid email address.")
 	private String email;
+	
+	@NotNull
 	private Date birthday;
+	
+	private Long roleId;
 
 	public User() {
 	}
 
-	public User(long id, String firstName, String middleName, String lastName, String login, String password,
-			String email, Date birthday, long roleId) {
+	public User(Long id, String firstName, String middleName, String lastName, String login, String password,
+			String email, Date birthday, Long roleId) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -115,11 +140,11 @@ public class User implements Serializable {
 		return true;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -179,13 +204,12 @@ public class User implements Serializable {
 		this.birthday = birthday;
 	}
 
-	public long getRoleId() {
+	public Long getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(long roleId) {
+	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
 
-	private long roleId;
 }

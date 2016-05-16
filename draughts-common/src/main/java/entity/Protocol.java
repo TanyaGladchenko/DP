@@ -15,14 +15,14 @@ public class Protocol implements Serializable {
 
 	private static final long serialVersionUID = -2006078514582952452L;
 
-	private long id;
-	private long positionId;
-	private long whitePlayerId;
-	private long blackPlayerId;
-	private long stateGameId;
+	private Long id;
+	private Long positionId;
+	private Long whitePlayerId;
+	private Long blackPlayerId;
+	private Long stateGameId;
 	private String title;
 
-	public Protocol(long id, long positionId, long whitePlayerId, long blackPlayerId, long stateGameId, String title) {
+	public Protocol(Long id, Long positionId, Long whitePlayerId, Long blackPlayerId, Long stateGameId, String title) {
 		super();
 		this.id = id;
 		this.positionId = positionId;
@@ -81,43 +81,43 @@ public class Protocol implements Serializable {
 		return true;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getPositionId() {
+	public Long getPositionId() {
 		return positionId;
 	}
 
-	public void setPositionId(long positionId) {
+	public void setPositionId(Long positionId) {
 		this.positionId = positionId;
 	}
 
-	public long getWhitePlayerId() {
+	public Long getWhitePlayerId() {
 		return whitePlayerId;
 	}
 
-	public void setWhitePlayerId(long whitePlayerId) {
+	public void setWhitePlayerId(Long whitePlayerId) {
 		this.whitePlayerId = whitePlayerId;
 	}
 
-	public long getBlackPlayerId() {
+	public Long getBlackPlayerId() {
 		return blackPlayerId;
 	}
 
-	public void setBlackPlayerId(long blackPlayerId) {
+	public void setBlackPlayerId(Long blackPlayerId) {
 		this.blackPlayerId = blackPlayerId;
 	}
 
-	public long getStateGameId() {
+	public Long getStateGameId() {
 		return stateGameId;
 	}
 
-	public void setStateGameId(long stateGameId) {
+	public void setStateGameId(Long stateGameId) {
 		this.stateGameId = stateGameId;
 	}
 

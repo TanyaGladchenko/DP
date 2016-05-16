@@ -12,6 +12,14 @@ import org.springframework.jdbc.core.RowMapper;
 import dao.IRoleDao;
 import entity.Role;
 
+/**
+ * @author Tatyana_Gladchenko
+ *
+ *         <p>
+ *         Role dao implementation. Works with MySql database
+ *         </p>
+ */
+
 public class RoleJdbc implements IRoleDao {
 
 	private DataSource dataSource;
@@ -28,8 +36,9 @@ public class RoleJdbc implements IRoleDao {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public void add(Role addObject) {
-		this.jdbcTemplateObject.update(SQL_INSERT_ROLE_QUERY, addObject.getName());
+	public Long add(Role addObject) {
+		long count = this.jdbcTemplateObject.update(SQL_INSERT_ROLE_QUERY, addObject.getName());
+		return count;
 	}
 
 	public List<Role> loadAll() {
@@ -38,7 +47,8 @@ public class RoleJdbc implements IRoleDao {
 	}
 
 	public Role load(Long id) {
-		Role r = (Role) this.jdbcTemplateObject.queryForObject(SQL_SELECT_ROLE_QUERY, new Object[] { id }, new RoleMapper());
+		Role r = (Role) this.jdbcTemplateObject.queryForObject(SQL_SELECT_ROLE_QUERY, new Object[] { id },
+				new RoleMapper());
 		return r;
 	}
 
