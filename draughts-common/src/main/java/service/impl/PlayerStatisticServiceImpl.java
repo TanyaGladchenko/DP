@@ -22,9 +22,10 @@ import service.IPlayerStatisticService;
 public class PlayerStatisticServiceImpl implements IPlayerStatisticService {
 
 	private static final Logger logger = Logger.getLogger(PlayerStatisticServiceImpl.class);
+
 	private IPlayerStatisticDao psDao;
 
-	public void setAuthorDao(IPlayerStatisticDao psDao) {
+	public void setPsDao(IPlayerStatisticDao psDao) {
 		this.psDao = psDao;
 	}
 
@@ -79,7 +80,8 @@ public class PlayerStatisticServiceImpl implements IPlayerStatisticService {
 	}
 
 	/**
-	 * Delegate delete method for persistence layer. See {@link IPlayerStatisticDao}
+	 * Delegate delete method for persistence layer. See
+	 * {@link IPlayerStatisticDao}
 	 */
 	public void delete(Long... ids) throws ServiceException {
 		try {
@@ -91,7 +93,8 @@ public class PlayerStatisticServiceImpl implements IPlayerStatisticService {
 	}
 
 	/**
-	 * Delegate load method for persistence layer. See {@link IPlayerStatisticDao}
+	 * Delegate load method for persistence layer. See
+	 * {@link IPlayerStatisticDao}
 	 */
 	public PlayerStatistic loadByPlayer(Long idPlayer) throws ServiceException {
 		try {

@@ -4,18 +4,25 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-	<definition name="template" template="/WEB-INF/layout/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+	<definition name="template" template="../WEB-INF/layout/layout.jsp">
+		<put-attribute name="header" value="../WEB-INF/layout/header.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+		<put-attribute name="footer" value="../WEB-INF/layout/footer.jsp" />
 	</definition>
 	
 	<definition name="registration" extends="template">
-	<put-attribute name="body"  value="/WEB-INF/jsp/registration.jsp"/>
+	<put-attribute name="body"  value="../WEB-INF/jsp/registration.jsp"/>
 	</definition>
 	
 	<definition name="profile" extends="template">
-	<put-attribute name="body"  value="/WEB-INF/jsp/profile.jsp"/>
+	<put-attribute name="body"  value="../WEB-INF/jsp/profile.jsp"/>
 	</definition>
 	
+	<definition name="uploadFile" extends="template">
+	<put-attribute name="body"  value="../WEB-INF/jsp/uploadFile.jsp"/>
+	</definition>
+	
+	<definition name="index" extends="template">
+	<put-attribute name="body"  value="../WEB-INF/jsp/index.jsp"/>
+	</definition>
 </tiles-definitions>
