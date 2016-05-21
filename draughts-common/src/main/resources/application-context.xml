@@ -18,25 +18,26 @@
 
 
 	<!-- Definition for studentJDBCTemplate bean -->
-	<bean id="roleJdbc" class="dao.impl.RoleJdbc">
+	<bean id="roleJdbc" class="dao.impl.RoleJdbc" scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="stateGameJdbc" class="dao.impl.StateGameJdbc">
+	<bean id="stateGameJdbc" class="dao.impl.StateGameJdbc" scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="userJdbc" class="dao.impl.UserJdbc">
+	<bean id="userJdbc" class="dao.impl.UserJdbc" scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="positionJdbc" class="dao.impl.PositionJdbc">
+	<bean id="positionJdbc" class="dao.impl.PositionJdbc" scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="movesJdbc" class="dao.impl.MovesJdbc">
+	<bean id="movesJdbc" class="dao.impl.MovesJdbc" scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="playerStatisticJdbc" class="dao.impl.PlayerStatisticJdbc">
+	<bean id="playerStatisticJdbc" class="dao.impl.PlayerStatisticJdbc"
+		scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="protocolJdbc" class="dao.impl.ProtocolJdbc">
+	<bean id="protocolJdbc" class="dao.impl.ProtocolJdbc" scope="prototype">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
