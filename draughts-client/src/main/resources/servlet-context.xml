@@ -9,25 +9,30 @@
 		http://www.springframework.org/schema/mvc 
 		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-	<import resource="classpath:/application-context.xml" />
+	<import resource="classpath:application-context.xml" />
 
-	<mvc:annotation-driven validator="validator" />
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven />
 
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<context:component-scan base-package="controller">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
+		<!-- <context:include-filter type="annotation" -->
+		<!-- expression="org.springframework.stereotype.Controller" /> -->
 	</context:component-scan>
 
 	<!-- MultipartResolver for parsing file uploads, implementation for Commons 
 		FileUpload -->
 	<bean id="multipartResolver"
-	class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000" />
+	</bean>
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:local-message/messages" />
+		<property name="basename" value="WEB-INF/local-message/messages" />
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="fileEncodings" value="UTF-8" />
 	</bean>
@@ -42,22 +47,11 @@
 		<property name="defaultLocale" value="ru" />
 	</bean>
 
-	<bean
-		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
-		<property name="interceptors">
-			<ref bean="localeChangeInterceptor" />
-		</property>
-	</bean>
-
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-		<property name="validationMessageSource" ref="messageSource" />
-	</bean>
-
 	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="locale" />
-		</bean>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<ref bean="localeChangeInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 
