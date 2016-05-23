@@ -5,18 +5,18 @@
 <tiles-definitions>
 
 	<definition name="template" template="../WEB-INF/layout/layout.jsp">
-		<put-attribute name="header" value="../WEB-INF/layout/header.jsp" />
+<!-- 		<put-attribute name="header" value="../WEB-INF/layout/header.jsp" /> -->
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="../WEB-INF/layout/footer.jsp" />
 	</definition>
 	
-	<definition name="registration" extends="template">
-	<put-attribute name="body"  value="../WEB-INF/jsp/registration.jsp"/>
-	</definition>
+<!-- 	<definition name="registration" extends="template"> -->
+<!-- 	<put-attribute name="body"  value="../WEB-INF/jsp/registration.jsp"/> -->
+<!-- 	</definition> -->
 	
-	<definition name="profile" extends="template">
-	<put-attribute name="body"  value="../WEB-INF/jsp/profile.jsp"/>
-	</definition>
+<!-- 	<definition name="profile" extends="template"> -->
+<!-- 	<put-attribute name="body"  value="../WEB-INF/jsp/profile.jsp"/> -->
+<!-- 	</definition> -->
 	
 	<definition name="uploadFile" extends="template">
 	<put-attribute name="body"  value="../WEB-INF/jsp/uploadFile.jsp"/>

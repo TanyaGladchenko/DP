@@ -21,27 +21,27 @@ public class User implements Serializable {
 	private Long id;
 	
 	@NotNull
-	@Size(min=3, max=20, message="Your first name must be between 3 and 20 characters long.")
+	@Size(min=3, max=20, message="{user.message.firstname}")
 	private String firstName;
 	
-	@Size(min=3, max=30, message="Your middle name must be between 3 and 30 characters long.")
+	@Size(min=3, max=30, message="{user.message.middlename}")
 	private String middleName;
 	
 	@NotNull
-	@Size(min=3, max=30, message="Your last name must be between 3 and 30 characters long.")
+	@Size(min=3, max=30, message="{user.message.lastname}")
 	private String lastName;
 	
 	@NotNull
 	@Pattern(regexp="^[a-zA-Z0-9]+$",
-			message="Login must be alphanumeric with no spaces")
+			message="${user.message.login}")
 	private String login;
 	
 	@NotNull
-	@Size(min=6, message="The password must be more 6 characters long.")
+	@Size(min=6, message="{user.message.password}")
 	private String password;
 	
 	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",
-			message="Invalid email address.")
+			message="{user.message.email}")
 	private String email;
 	
 	@NotNull

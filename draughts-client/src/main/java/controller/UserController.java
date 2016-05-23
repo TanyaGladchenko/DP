@@ -18,39 +18,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import entity.User;
 import service.IUserService;
 
-@Controller
+//@Controller
 public class UserController {
 	private static final Logger log = Logger.getLogger(UserController.class);
 
-	@Autowired
-	private Validator validator;
-
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.setValidator(validator);
-	}
-
-	@Autowired
-	private IUserService userService;
-
-	@RequestMapping(method=RequestMethod.GET, params="user")
-	public String createUser(Model model) {
-		model.addAttribute(new User());
-		return "jsp/registration";
-	}
-	
-	@RequestMapping(method=RequestMethod.POST)
-	public String addUserReg(@Valid User user, BindingResult bindingResult){
-		if(bindingResult.hasErrors()){
-			return "jsp/registration";
-		}
-		userService.saveOrUpdate(user);
-		return "redirect:/jsp/" + user.getLogin();
-	}
-	
-	@RequestMapping(value="/{login}", method=RequestMethod.GET)
-	public String showUserProfile(@PathVariable String login, Model model){
-		model.addAttribute(userService.loadByLogin(login));
-		return "jsp/profile";
-	}
+//	@Autowired
+//	private Validator validator;
+//
+//	@InitBinder
+//	protected void initBinder(WebDataBinder binder) {
+//		binder.setValidator(validator);
+//	}
+//
+//	@Autowired
+//	private IUserService userService;
+//
+//	@RequestMapping(method=RequestMethod.GET, params="user")
+//	public String createUser(Model model) {
+//		model.addAttribute(new User());
+//		return "jsp/registration";
+//	}
+//	
+//	@RequestMapping(method=RequestMethod.POST)
+//	public String addUserReg(@Valid User user, BindingResult bindingResult){
+//		if(bindingResult.hasErrors()){
+//			return "jsp/registration";
+//		}
+//		//userService.saveOrUpdate(user);
+//		return "jsp/index";
+////		return "redirect:/jsp/" + user.getLogin();
+//	}
+//	@RequestMapping(value="/{login}", method=RequestMethod.GET)
+//	public String showUserProfile(@PathVariable String login, Model model){
+//		model.addAttribute(userService.loadByLogin(login));
+//		return "jsp/profile";
+//	}
+//	@RequestMapping(value="/{login}", method=RequestMethod.GET)
+//	public String showUserProfile(@PathVariable String login, Model model){
+//		model.addAttribute(userService.loadByLogin(login));
+//		return "jsp/profile";
+//	}
 }

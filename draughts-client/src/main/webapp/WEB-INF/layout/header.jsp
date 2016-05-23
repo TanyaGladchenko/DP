@@ -3,8 +3,7 @@
 	вапролдлорпавапрол
 <%-- 	<spring:message code="header.message" /> --%>
 </h1>
-<!-- <p id="language"> -->
-<%-- 	<a href="?locale=en"> <spring:message code="header.language.en" /> --%>
-<%-- 	</a> <a href="?locale=ru"> <spring:message code="header.language.ru" /> --%>
-<!-- 	</a> -->
-<!-- </p> -->
+	<c:set var="currentURL"
+		value="${requestScope['javax.servlet.forward.request_uri']}" />
+	<c:set var="russianLocale" value="?locale=ru" />
+	<c:set var="englishLocale" value="?locale=en" />
